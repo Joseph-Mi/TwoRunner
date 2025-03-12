@@ -26,61 +26,47 @@ void clear_screen() {
 }
 
 void draw_vert_line(int x0, int y0, int len, short int line_color) {
-    int width = 7;
+    int width = 7; // Fixed width for the vertical line
 
-    for (int x = x0; x < x0 + width; x++) {
-        
+    for (int x = x0; x < x0 + width; x++) { // Loop over width (7 pixels)
+        for (int y = y0; y < y0 + len; y++) { // Loop over length
+            plot_pixel(x, y, line_color);
+        }
     }
 }
 
 void draw_horiz_line(int x0, int y0, int len, short int line_color) {
-    int width = 7;
+    int width = 7; // Fixed width for the horizontal line
 
-
+    for (int y = y0; y < y0 + width; y++) { // Loop over width (7 pixels)
+        for (int x = x0; x < x0 + len; x++) { // Loop over length
+            plot_pixel(x, y, line_color);
+        }
+    }
 }
 
 void draw_maze() {
-    int x0 = 0;
-    int y0 = 0;
-    int x1 = 320;
-    int y1 = 240;
-    draw_line(x0, y0, x1, y0, 0x0000); //Top
-    draw_line(x0, y0, x0, y1, 0x0000); //Left
-    draw_line(x1, y0, x1, y1, 0x0000); //Right
-    draw_line(x0, y1, x1, y1, 0x0000); //Bottom
-    draw_line(0, 0, 320, 240, 0x0000); //Diagonal
-}
+    // Define wall color
+    short int wall_color = 0xA534; // Brown-gray
 
-void draw_player_1(int x0, int y0) {
-    int height = 5;
-    int width = 5;
-    for (int x = x0; x < x0 + width; x++) {
-        for (int y = y0; y < y0 + height; y++) {
-            if ((x == x0 + 1 || x == x0 + 3) && (y == y0 + 1)) {
-                plot_pixel(x, y, 0x0000); //Black (eyes)
-            } else if ((x == x0 + 1 || x == x0 + 2 || x == x0 + 3) && (y == y0 + 3)) {
-                plot_pixel(x, y, 0x0000); //Black (bottom line)
-            } else {
-                plot_pixel(x, y, 0xF7BB); //beige (body)
-            }
-        }
-    }
-}
+    // Outer border
+    draw_horiz_line(0, 0, SCREEN_WIDTH, wall_color);
+    draw_horiz_line(0, SCREEN_HEIGHT - 7, SCREEN_WIDTH, wall_color);
+    draw_vert_line(0, 0, SCREEN_HEIGHT, wall_color);
+    draw_vert_line(SCREEN_WIDTH - 7, 0, SCREEN_HEIGHT, wall_color);
 
-void draw_player_2(int x0, int y0) {
-    int height = 5;
-    int width = 5;
-    for (int x = x0; x < x0 + width; x++) {
-        for (int y = y0; y < y0 + height; y++) {
-            if ((x == x0 + 1 || x == x0 + 3) && (y == y0 + 1)) {
-                plot_pixel(x, y, 0x0000); //Black (eyes)
-            } else if ((x == x0 + 1 || x == x0 + 2 || x == x0 + 3) && (y == y0 + 3)) {
-                plot_pixel(x, y, 0x0000); //Black (bottom line)
-            } else {
-                plot_pixel(x, y, 0x07E0); //Green (body)
-            }
-        }
-    }
+    // Internal maze structure with twists and turns
+    draw_horiz_line(20, 20, 100, wall_color);
+    draw_vert_line(120, 20, 80, wall_color);
+    draw_horiz_line(40, 100, 80, wall_color);
+    draw_vert_line(40, 100, 60, wall_color);
+    draw_horiz_line(40, 160, 120, wall_color);
+    draw_vert_line(160, 100, 60, wall_color);
+    draw_horiz_line(160, 100, 100, wall_color);
+    draw_vert_line(260, 100, 80, wall_color);
+    draw_horiz_line(100, 180, 160, wall_color);
+    draw_vert_line(100, 180, 40, wall_color);
+    draw_horiz_line(100, 220, 180, wall_color);
 }
 
 int main(void) {
