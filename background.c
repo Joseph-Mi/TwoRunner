@@ -79,24 +79,26 @@ void draw_maze(short int wall_color) {
     draw_horiz_line(0, 34, 52, wall_color);         // Line 2 (top + 15)
     draw_horiz_line(94, 34, 15, wall_color);
 	draw_horiz_line(124, 34, 30, wall_color);
-    //draw_horiz_line(134, 34, 31, wall_color);
 	draw_horiz_line(210, 34, 45, wall_color);
     draw_horiz_line(298, 34, 15, wall_color);
 
     draw_horiz_line(19, 49, 15, wall_color);        // Line 3 (top + 30)
     draw_horiz_line(109, 49, 30, wall_color);
 	draw_horiz_line(298, 49, 15, wall_color);
+	draw_horiz_line(196, 49, 15, wall_color);
 
     draw_horiz_line(7, 64, 45, wall_color);         // Line 4 (top + 45)
-    draw_horiz_line(120, 64, 100, wall_color);
+    draw_horiz_line(124, 64, 100, wall_color);
 	draw_horiz_line(283, 64, 30, wall_color);
 
     draw_horiz_line(19, 79, 15, wall_color);       
     draw_horiz_line(64, 79, 30, wall_color);
+	draw_horiz_line(152, 79, 59, wall_color);
+	draw_horiz_line(223, 79, 18, wall_color);
 	draw_horiz_line(283, 79, 15, wall_color);
 
-    draw_horiz_line(52, 94, 180, wall_color);      // Line 6 (top + 75)
-	
+    draw_horiz_line(52, 94, 103, wall_color);      // Line 6 (top + 75)
+	draw_horiz_line(165, 94, 76, wall_color); 
 	
     // Bottom lines (6 lines)
 	draw_horiz_line(49, 218, 45, wall_color);
@@ -122,14 +124,14 @@ void draw_maze(short int wall_color) {
 	
     draw_horiz_line(109, 158, 73, wall_color); 
 	draw_horiz_line(19, 158, 78, wall_color);
-	//draw_horiz_line(22, 158, 80, wall_color);
-	//draw_horiz_line(22, 158, 80, wall_color);
+	draw_horiz_line(208, 158, 32, wall_color); 
+	draw_horiz_line(253, 158, 30, wall_color); 
 	 
 	draw_horiz_line(0, 143, 37, wall_color); 
-	draw_horiz_line(0, 143, 37, wall_color); 
+	draw_horiz_line(223, 143, 46, wall_color); 
 	draw_horiz_line(94, 143, 45, wall_color);
+	draw_horiz_line(152, 143, 43, wall_color);
 
-	
 	
     // Vertical 
 	//left
@@ -160,6 +162,7 @@ void draw_maze(short int wall_color) {
 	
 	draw_vert_line(109, 0, 37, wall_color);
 	draw_vert_line(109, 52, 30, wall_color);
+	draw_vert_line(109, 110, 36, wall_color);
 	draw_vert_line(109, 188, 15, wall_color);
 	
 	draw_vert_line(124, 49, 80, wall_color);
@@ -182,28 +185,35 @@ void draw_maze(short int wall_color) {
 	draw_vert_line(268, 143, 15, wall_color);
 	draw_vert_line(268, 173, 15, wall_color);
 	draw_vert_line(268, 203, 18, wall_color);
-	//draw_vert_line(268, 200, 10, wall_color);
 	
-	draw_vert_line(253, 0, 80, wall_color);
+	draw_vert_line(253, 0, 68, wall_color);
+	draw_vert_line(253, 79, 65, wall_color);
 	draw_vert_line(253, 203, 90, wall_color);
 	
 	draw_vert_line(238, 19, 48, wall_color);
-	draw_vert_line(238, 100, 30, wall_color);
+	draw_vert_line(238, 109, 19, wall_color);
 	draw_vert_line(238, 176, 45, wall_color);
 	
 	draw_vert_line(223, 19, 18, wall_color);
-	draw_vert_line(223, 100, 15, wall_color);
+	draw_vert_line(223, 109, 35, wall_color);
+	draw_vert_line(223, 30, 51, wall_color);
 	
 	draw_vert_line(208, 7, 15, wall_color);
-	draw_vert_line(208, 100, 30, wall_color);
+	draw_vert_line(208, 96, 51, wall_color);
+	draw_vert_line(208, 160, 15, wall_color);
+	draw_vert_line(208, 49, 15, wall_color);
+	draw_vert_line(208, 49, 15, wall_color);
 	
 	draw_vert_line(193, 0, 22, wall_color);
-	draw_vert_line(193, 100, 80, wall_color);
+	draw_vert_line(193, 40, 12, wall_color);
+	draw_vert_line(193, 109, 52, wall_color);
+	draw_vert_line(193, 34, 18, wall_color);
+	draw_vert_line(193, 188, 18, wall_color);
 	
 	/////////////////MID BOX//////////////////
 	//outer
-	draw_horiz_line(132, 102, 24, wall_color);
-	draw_horiz_line(164, 102, 23, wall_color);
+	draw_horiz_line(132, 102, 23, wall_color);
+	draw_horiz_line(165, 102, 22, wall_color);
 	draw_horiz_line(132, 135, 24, wall_color);
 	draw_horiz_line(164, 135, 23, wall_color);
 	draw_vert_line(132, 102, 33, wall_color);
@@ -218,14 +228,25 @@ void draw_maze(short int wall_color) {
 	
 	//horiz
 	draw_horiz_line(64, 110, 15, wall_color);
+	draw_horiz_line(240, 109, 15, wall_color);
 	draw_horiz_line(34, 125, 45, wall_color);
+	draw_horiz_line(300, 125, 20, wall_color);
+	draw_horiz_line(270, 125, 16, wall_color);
 	
 	//vert
-	draw_vert_line(138, 60, 40, wall_color);
+	draw_vert_line(138, 79, 18, wall_color);
 	draw_vert_line(152, 19, 18, wall_color);
 	draw_vert_line(165, 0, 22, wall_color);
 	draw_vert_line(179, 19, 45, wall_color);
 	
+	draw_vert_line(152, 49, 18, wall_color);
+	draw_vert_line(152, 95, 8, wall_color);
+	draw_vert_line(165, 95, 8, wall_color);
+	draw_vert_line(165, 20, 32, wall_color);
+	draw_vert_line(165, 174, 17, wall_color);
+	draw_vert_line(165, 65, 17, wall_color);
+	
+	draw_vert_line(138, 173, 18, wall_color);
 	draw_vert_line(138, 203, 30, wall_color);
 	draw_vert_line(152, 188, 33, wall_color);
 	draw_vert_line(179, 203, 30, wall_color);
