@@ -88,6 +88,10 @@ void clear_screen(){
 void doEverything(int state, char key){
 	short int box_colour;
 	int x0, y0, x1, y1;
+	int next_pixel_color;
+
+	
+
 	for (int i = 0; i < N; i++){
 		if (state == 0){ //erase
 			box_colour = 0;
