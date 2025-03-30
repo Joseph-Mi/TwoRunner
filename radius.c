@@ -22,6 +22,7 @@ void create_sphere(int x, int y, int x2, int y2, int radius1, int radius2) {
    }
 }
 
+// comment out later
 void plot_pixel(int x, int y, short int line_color) {
     if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) return; //bound check
     volatile short int *pixel_address;
@@ -29,4 +30,4 @@ void plot_pixel(int x, int y, short int line_color) {
     *pixel_address = line_color;
 }
 
-//25-30 without boost and 40 with boost
+//20-25 without boost and 35 with boost

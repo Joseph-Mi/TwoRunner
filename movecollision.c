@@ -14,6 +14,9 @@ short int Buffer1[240][512]; // 240 rows, 512 (320 + padding) columns
 short int Buffer2[240][512];
 int x[N], y[N], dx[N], dy[N], x_fb[N], y_fb[N], speed_multiplier[N];
 
+// Wall color from background.c
+#define WALL_COLOR 0xF6900
+
 void plot_pixel1(int x, int y, short int line_color);
 void clear_screen();
 void doEverything(int state, char key);
@@ -70,7 +73,7 @@ int main(void)
 	}
 }
 
-#define WALL_COLOR 0xF6900
+// Function to check if the next position is a wall
 bool check_collision(int x, int y) {
     // Check all pixels in the player's 5x5 area
     for (int dx = 0; dx < 5; dx++) {
@@ -214,8 +217,19 @@ void doEverything(int state, char key){
 				}
 			}
 			
-			x[i] += dx[i];
-			y[i] += dy[i];
+			// Calculate next position
+			int next_x = x[i] + dx[i];
+			int next_y = y[i] + dy[i];
+			
+			// Check collision before updating position
+			if (!check_collision(next_x, next_y)) {
+				x[i] = next_x;
+				y[i] = next_y;
+			} else {
+				// Reset delta if collision detected
+				dx[i] = 0;
+				dy[i] = 0;
+			}
 			
 			if (x[i] >= 317){ //edge conditions
 				x[i] = 317;

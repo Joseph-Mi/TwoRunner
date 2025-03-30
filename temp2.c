@@ -35,6 +35,7 @@ void draw_thick_horiz_line(int x0, int y0, int len, short int color, int width);
 void draw_thick_vert_line(int x0, int y0, int len, short int color, int width);
 void draw_outline(short int color);
 void draw_maze(short int wall_color);
+void create_sphere(int x, int y, int x2, int y2, int radius1, int radius2);
 
 int main(void)
 {
@@ -90,13 +91,14 @@ int main(void)
 }
 
 // Function to check if the next position is a wall
-bool check_collision(int x, int y) {
+bool check_collision(int x, int y, short int buffer[240][512]) {
     // Check all pixels in the player's 5x5 area
     for (int dx = 0; dx < 5; dx++) {
         for (int dy = 0; dy < 5; dy++) {
-            volatile short int *pixel_address = (volatile short int *)(pixel_buffer_start + ((y + dy) << 10) + ((x + dx) << 1));
-            if (*pixel_address == WALL_COLOR) {
-                return true; // Collision detected
+            if (x + dx >= 0 && x + dx < SCREEN_WIDTH && y + dy >= 0 && y + dy < SCREEN_HEIGHT) {
+                if (buffer[y + dy][x + dx] == WALL_COLOR) {
+                    return true; // Collision detected
+                }
             }
         }
     }
@@ -141,6 +143,8 @@ void doEverything(int state, char key){
 				draw_player_2(x0, y0);
 			}
 		}
+
+        create_sphere(x[0], y[0], x[1], y[1], 20, 20);
 		
 		if (state == 0){ //store what's on screen (current front buffer)
 			if (x_fb[i] == 2 && x[i] == 0){
@@ -237,8 +241,12 @@ void doEverything(int state, char key){
 			int next_x = x[i] + dx[i];
 			int next_y = y[i] + dy[i];
 			
+			// Check collision in both buffers
+			bool collision_in_front = check_collision(next_x, next_y, Buffer1);
+			bool collision_in_back = check_collision(next_x, next_y, Buffer2);
+			
 			// Check collision before updating position
-			if (!check_collision(next_x, next_y)) {
+			if (!collision_in_front && !collision_in_back) {
 				x[i] = next_x;
 				y[i] = next_y;
 			} else {
@@ -553,3 +561,12 @@ void draw_maze(short int wall_color) {
 	draw_vert_line(165, 203, 30, wall_color);
 }
 
+void create_sphere(int x, int y, int x2, int y2, int radius1, int radius2) {
+   for (int i = 0; i < SCREEN_WIDTH; i++) {
+      for (int j = 0; j < SCREEN_HEIGHT; j++) {
+         if ((i - x) * (i - x) + (j - y) * (j - y) > radius1 * radius1 && (i - x2) * (i - x2) + (j - y2) * (j - y2) > radius2 * radius2) {
+            plot_pixel(i, j, 0x0000);
+         }
+      }
+   }
+}
