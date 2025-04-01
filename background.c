@@ -79,7 +79,8 @@ void draw_maze(short int wall_color) {
     draw_horiz_line(0, 34, 52, wall_color);         // Line 2 (top + 15)
     draw_horiz_line(94, 34, 15, wall_color);
 	draw_horiz_line(124, 34, 30, wall_color);
-	draw_horiz_line(210, 34, 45, wall_color);
+	draw_horiz_line(210, 34, 15, wall_color);
+	draw_horiz_line(240, 34, 15, wall_color);
     draw_horiz_line(298, 34, 15, wall_color);
 
     draw_horiz_line(19, 49, 15, wall_color);        // Line 3 (top + 30)
@@ -88,7 +89,8 @@ void draw_maze(short int wall_color) {
 	draw_horiz_line(196, 49, 15, wall_color);
 
     draw_horiz_line(7, 64, 45, wall_color);         // Line 4 (top + 45)
-    draw_horiz_line(124, 64, 100, wall_color);
+    draw_horiz_line(124, 64, 72, wall_color);
+	draw_horiz_line(208, 64, 15, wall_color);
 	draw_horiz_line(283, 64, 30, wall_color);
 
     draw_horiz_line(19, 79, 15, wall_color);       
@@ -97,14 +99,13 @@ void draw_maze(short int wall_color) {
 	draw_horiz_line(223, 79, 18, wall_color);
 	draw_horiz_line(283, 79, 15, wall_color);
 
-    draw_horiz_line(52, 94, 103, wall_color);      // Line 6 (top + 75)
+    draw_horiz_line(64, 94, 91, wall_color);      // Line 6 (top + 75)
 	draw_horiz_line(165, 94, 76, wall_color); 
 	
     // Bottom lines (6 lines)
 	draw_horiz_line(49, 218, 45, wall_color);
     draw_horiz_line(109, 218, 30, wall_color);    
 	draw_horiz_line(154, 218, 12, wall_color);
-	//draw_horiz_line(154, 218, 60, wall_color);
 	draw_horiz_line(194, 218, 45, wall_color);
 	
     draw_horiz_line(7, 203, 30, wall_color);
@@ -119,7 +120,8 @@ void draw_maze(short int wall_color) {
 	draw_horiz_line(253, 188, 18, wall_color);
 	draw_horiz_line(283, 188, 18, wall_color);
 	
-	draw_horiz_line(79, 173, 180, wall_color);
+	draw_horiz_line(79, 173, 117, wall_color);
+	draw_horiz_line(208, 173, 60, wall_color);
 	draw_horiz_line(34, 173, 30, wall_color);
 	
     draw_horiz_line(109, 158, 73, wall_color); 
@@ -155,7 +157,8 @@ void draw_maze(short int wall_color) {
 	draw_vert_line(64, 173, 45, wall_color);
 	
 	draw_vert_line(79, 7, 60, wall_color);
-	draw_vert_line(79, 94, 53, wall_color);
+	draw_vert_line(79, 110, 36, wall_color);
+	draw_vert_line(79, 160, 15, wall_color);
 	
 	draw_vert_line(94, 19, 63, wall_color);
 	draw_vert_line(94, 94, 34, wall_color);
@@ -167,7 +170,7 @@ void draw_maze(short int wall_color) {
 	
 	draw_vert_line(124, 49, 80, wall_color);
 	draw_vert_line(124, 100, 20, wall_color);
-	draw_vert_line(124, 158, 30, wall_color);
+	draw_vert_line(124, 158, 33, wall_color);
 	
 	//right
 	draw_vert_line(298, 19, 15, wall_color);
