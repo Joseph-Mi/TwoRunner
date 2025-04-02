@@ -17,6 +17,29 @@ void plot_pixel(int x, int y, short int line_color) {
     *pixel_address = line_color;
 }
 
+void plot_finish(int x, int y) {
+    int black = 0x0000; 
+    int white = 0xFFFF; 
+   
+    int square_size = 2; // Each square is 2x2 pixels
+    int grid_size = 6;   // 8x8 grid
+    
+    for (int row = 0; row < grid_size; row++) {
+        for (int col = 0; col < grid_size; col++) {
+            // Determine color based on row and column parity
+            int color = ((row + col) % 2 == 0) ? white : black;
+            
+            // Draw a 2x2 square at the correct position
+            for (int dx = 0; dx < square_size; dx++) {
+                for (int dy = 0; dy < square_size; dy++) {
+                    plot_pixel(x + col * square_size + dx, y + row * square_size + dy, color);
+                }
+            }
+        }
+    }
+}
+
+
 void clear_screen() {
     for (int x = 0; x < SCREEN_WIDTH; x++) {
         for (int y = 0; y < SCREEN_HEIGHT; y++) {
@@ -268,6 +291,7 @@ int main(void) {
     draw_maze(wall_color); // Draw maze walls
 	
 	//draw_player_1(190,224);
+	plot_finish(7,7);
 
     return 0;
 }
